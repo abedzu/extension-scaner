@@ -1,0 +1,32 @@
+{
+  "manifest_version": 3,
+  "name": "Chrome extension scanner",
+  "version": "1.0.0",
+  "description": "Scans extensions for vulnerabilities",
+  "icons": {
+    "128": "GP-icon.png"
+  },
+  "action": {
+    "default_popup": "index.html",
+    "default_icon": "GP-icon.png"
+  },
+  "permissions": [
+    "http://localhost:8000/*",
+    "http://localhost:8081/*",
+    "storage",
+    "alarms",
+    "management",
+    "downloads",
+    "tabs"
+  ],
+  "host_permissions": [
+    "http://localhost:8000/*",
+    "http://localhost:8081/*"
+  ],
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  },
+  "background": {
+    "service_worker": "background.js"
+  }
+}

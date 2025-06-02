@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Extension Security Scanner</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        max-width: 800px;
+        margin: 0 auto;
+        padding: 20px;
+        background-color: #f5f5f5;
+      }
+
+      .header {
+        text-align: center;
+        margin-bottom: 30px;
+      }
+
+      .controls {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        margin-bottom: 20px;
+        display: flex;
+        gap: 10px;
+        justify-content: center;
+      }
+
+      select,
+      button {
+        padding: 10px 15px;
+        font-size: 16px;
+        border-radius: 4px;
+        border: 1px solid #ddd;
+      }
+
+      button {
+        background-color: #4caf50;
+        color: white;
+        border: none;
+        cursor: pointer;
+        transition: background-color 0.3s;
+      }
+
+      button:disabled {
+        background-color: #a0a0a0;
+        cursor: not-allowed;
+      }
+
+      .progress {
+        text-align: center;
+        margin: 20px 0;
+        color: #666;
+      }
+
+      .results {
+        background: white;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 15px;
+      }
+
+      th,
+      td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+      }
+
+      th {
+        background-color: #f8f9fa;
+      }
+
+      .risk-high {
+        color: #dc3545;
+        font-weight: bold;
+      }
+      .risk-medium {
+        color: #ffc107;
+        font-weight: bold;
+      }
+      .risk-low {
+        color: #28a745;
+        font-weight: bold;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <h1>Chrome Extension Security Scanner</h1>
+    </div>
+
+    <div class="controls">
+      <select id="scanLevel">
+        <option value="low">Low Intensity</option>
+        <option value="medium" selected>Medium Intensity</option>
+        <option value="aggressive">Aggressive</option>
+      </select>
+      <button id="scanButton">Start Scan</button>
+    </div>
+
+    <div class="progress" id="progress" style="display: none">
+      Scanning... <span id="progressText">0/0</span>
+    </div>
+
+    <div class="results">
+      <h2>Scan Results</h2>
+      <table id="resultsTable">
+        <thead>
+          <tr>
+            <th>Extension ID</th>
+            <th>Version</th>
+            <th>Risk Score</th>
+            <th>Risk Level</th>
+          </tr>
+        </thead>
+        <tbody id="resultsBody"></tbody>
+      </table>
+    </div>
+
+    <script src="index.js"></script>
+  </body>
+</html>
